@@ -1,0 +1,117 @@
+<app-header></app-header>
+<div id="page-contents">
+    <div class="container">
+        <div class="row">
+
+            <app-left-bar></app-left-bar>
+            <div class="col-md-7">
+                <app-publish></app-publish>
+
+                <!-- Post Content
+            ================================================= -->
+
+
+
+
+
+                <div class="post-content" *ngFor="let pos of listOfPost; let i=index ">
+
+
+
+                    <img src=" assets/images/post-images/1.jpg" alt="post-image" class="img-responsive post-image" />
+                    <div class="post-container">
+                        <img src="assets/images/users/user-5.jpg" alt="user" class="profile-photo-md pull-left" />
+                        <div class="post-detail">
+                            <div class="user-info">
+                                <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span
+                                        class="following">following</span></h5>
+                                <p class="text-muted">Published a photo about 3 mins ago </p>
+                            </div>
+
+                            <div class="line-divider"></div>
+                            <div class="post-text">
+                                <h1> {{pos.text}} </h1>
+                            </div>
+                            <div class="line-divider"></div>
+                            <p #ref7>{{pos.id}} </p>
+
+                            <h5>
+
+                                <a href="#collapse-{{ i }}" data-toggle="collapse" aria-expanded="true"
+                                    (click)="handleSubmitcomment(ref,ref2.value);onUpdateLikes(pos.id,ref7)">
+                                    Show/Add Comments
+
+                                </a>
+                            </h5>
+
+                            <div id="collapse-{{ i }}" class="collapse">
+
+                                <div class="container" *ngFor="let p of pos.comment ; let m=index ; ">
+
+
+
+                                    <div class="post-comment">
+
+                                        <img src="assets/images/users/user-11.jpg" alt="" class="profile-photo-sm" />
+                                        <p><a href="timeline.html" class="profile-link">Diana </a><i
+                                                class="em em-laughing"></i>
+                                        <h5 style="color: black;">
+                                            {{p.text}}
+
+                                        </h5>
+
+                                    </div>
+
+
+                                    <div *ngIf="sta" class="post-comment">
+                                        <img src="assets/images/users/user-4.jpg" alt="" class="profile-photo-sm" />
+                                        <p><a href="timeline.html" class="profile-link">John </a>
+
+
+                                    </div>
+
+
+                                </div>
+                                <p #ref>{{pos.id}} </p>
+                                <form [formGroup]="postForm" (ngSubmit)="handleSubmit()">
+                                    <div class="post-comment">
+                                        <img src="assets/images/users/user-1.jpg" alt="" class="profile-photo-sm" />
+                                        <input style="width: 180px;" type="text" formControlName="text"
+                                            class="form-control" placeholder="Post a comment" #ref2>
+
+                                        <input style="margin-left: 15px;" type="submit" value="ADD this Comment"
+                                            onClick="window.location.reload()" class="btn btn-primary">
+                                    </div>
+                                    <div class="reaction">
+                                        <p #ref3> {{pos.like}}</p>
+                                        <a class="btn text-green" (click)="saveToLike()"
+                                            onclick="window.location.reload()"><i class="icon ion-thumbsup"></i>
+                                            {{pos.like}}</a>
+                                        <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+                                    </div>
+
+
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <app-right-bar></app-right-bar>
+        </div>
+        <app-right-bar></app-right-bar>
+    </div>
+    <app-footer></app-footer>

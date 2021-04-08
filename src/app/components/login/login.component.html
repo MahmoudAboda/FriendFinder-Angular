@@ -1,0 +1,63 @@
+<section id="banner">
+    <div class="container">
+
+        <!-- Sign Up Form
+    ================================================= -->
+        <div class="sign-up-form">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Friend Finder" /></a>
+            <h2 class="text-white">Find My Friends</h2>
+            <div class="line-divider"></div>
+            <div class="form-wrapper">
+                <p class="signup-text">LogIN now and meet awesome people around the world</p>
+                <form #loginform="ngForm" (ngSubmit)="loginUser()">
+
+                    <strong class="text-danger">{{msg}}</strong>
+                    <div class="form-group">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter Email" name="email"
+                                [(ngModel)]="user.email" required #email="ngModel"
+                                [class.is-invalid]="email.invalid && email.touched">
+                            <div *ngIf="email.errors && (email.invalid && email.touched)">
+                                <strong class="text-danger" *ngIf="email.errors.required">Email Id is Required</strong>
+
+                            </div>
+
+
+
+
+
+
+
+                            <div class="form-group" style="margin-top: 20px;">
+                                <input type="password" class="form-control" placeholder="Enter password" name="password"
+                                    [(ngModel)]="user.password" required #password="ngModel"
+                                    [class.is-invalid]="password.invalid && password.touched">
+                                <div *ngIf="password.errors && (password.invalid && password.touched)">
+                                    <strong class="text-danger" *ngIf="password.errors.required">Password is
+                                        Required</strong>
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="remember">Remember me</label>
+                            </div>
+
+                        </div>
+
+
+
+                        <button class="btn-secondary" type="submit"> Login</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div><!-- Sign Up Form End -->
+        <svg class="arrows hidden-xs hidden-sm">
+            <path class="a1" d="M0 0 L30 32 L60 0"></path>
+            <path class="a2" d="M0 20 L30 52 L60 20"></path>
+            <path class="a3" d="M0 40 L30 72 L60 40"></path>
+        </svg>
+    </div>
+</section>

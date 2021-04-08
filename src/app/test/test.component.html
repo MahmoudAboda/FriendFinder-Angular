@@ -1,0 +1,38 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">image</th>
+            <th scope="col">text</th>
+            <th scope="col">like</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of listOfPost1">
+            <td> {{post.id}}</td>
+            <td> {{post.text}}</td>
+            <td> sdd</td>
+            <td> dsdd</td>
+        </tr>
+    </tbody>
+</table>
+<form [formGroup]="postForm" (ngSubmit)="handleSubmit()" enctype="multipart/form-data">
+    <label>
+        image
+        <input type="file" formControlName="image" name="image">
+    </label>
+    <br>
+    <label>
+        like
+        <input type="text" formControlName="like" name="like">
+    </label>
+    <br>
+    <label>
+        text
+        <input type="text" formControlName="text" name="text">
+    </label>
+    <br>
+    <input type="submit" value="ADD this Post">
+
+</form>
